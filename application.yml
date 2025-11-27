@@ -60,9 +60,9 @@ resilience4j:
     instances:
       promotion-service-circuit-breaker:
         record-exceptions:
-          - by.javaguru.jdmik11.promotionservice.api.exception.SecurityServiceError
-          - by.javaguru.jdmik11.promotionservice.api.exception.AccountingServiceError
-          - by.javaguru.jdmik11.promotionservice.api.exception.ProfilerServiceError
+          - by.javaguru.jdmik11.promotionservice.api.exception.security.SecurityServiceError
+          - by.javaguru.jdmik11.promotionservice.api.exception.accounting.AccountingServiceError
+          - by.javaguru.jdmik11.promotionservice.api.exception.profiler.ProfilerServiceError
         failure-rate-threshold: 50
         automatic-transition-from-open-to-half-open-enabled: true
         wait-duration-in-open-state:
@@ -78,9 +78,9 @@ resilience4j:
     instances:
       promotion-service-retry:
         retry-exceptions:
-          - by.javaguru.jdmik11.promotionservice.api.exception.SecurityServiceError
-          - by.javaguru.jdmik11.promotionservice.api.exception.AccountingServiceError
-          - by.javaguru.jdmik11.promotionservice.api.exception.ProfilerServiceError
+          - by.javaguru.jdmik11.promotionservice.api.exception.security.SecurityServiceError
+          - by.javaguru.jdmik11.promotionservice.api.exception.accounting.AccountingServiceError
+          - by.javaguru.jdmik11.promotionservice.api.exception.profiler.ProfilerServiceError
         max-attempts: 5
         wait-duration:
           seconds: 5
