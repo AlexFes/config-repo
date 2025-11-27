@@ -24,6 +24,14 @@ spring:
     deserialization:
       fail-on-unknown-properties: true
 
+feign:
+  okhttp:
+    enabled: false
+  httpclient:
+    enabled: false
+  hc5:
+    enabled: true
+
 logging:
   level:
     root: info
