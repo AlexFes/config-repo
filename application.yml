@@ -23,6 +23,29 @@ spring:
   jackson:
     deserialization:
       fail-on-unknown-properties: true
+  kafka:
+    bootstrap-servers: ${KAFKA-BOOTSTRAP-SERVERS}
+    listener:
+      ack-mode: batch
+    properties:
+      spring.json.trusted.packages: by.javaguru.jdmik11.profilercore.*
+    consumer:
+      group-id: jdmik11-${spring.application.name}-consumer-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    producer:
+      acks: all
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      compression-type: lz4
+      batch-size: 65536
+      properties:
+        max.in.flight.requests.per.connection: 5
+        linger.ms: 100
+        delivery.timeout.ms: 20000
+        request.timeout.ms: 4500
+        retry.backoff.ms: 500
+        enable.idempotence: true
 
 feign:
   okhttp:
